@@ -11,6 +11,7 @@ src/LibInterface.cc
 src/Set4LibInterfaces.cpp
 src/ProgramInterpreter.cpp
 src/vec3d.cc
+src/ComChannel.cc
 )
  
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wl,-rpath=./plugin")

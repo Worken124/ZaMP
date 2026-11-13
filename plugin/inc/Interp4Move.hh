@@ -49,7 +49,7 @@ class Interp4Move: public AbstractInterp4Command {
   /*!
   * \brief Wykonuje polecenie Move
   */
-  virtual bool ExecuteCmd(Scene *scene) override;
+  virtual bool ExecuteCmd(Scene *scene, ComChannel *channel) override;
 
  };
 

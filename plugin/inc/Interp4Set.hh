@@ -58,7 +58,7 @@ class Interp4Set: public AbstractInterp4Command {
   /*!
   * \brief Wykonuje polecenie Set
   */
-  virtual bool ExecuteCmd(Scene *scene) override;
+  virtual bool ExecuteCmd(Scene *scene, ComChannel *channel) override;
  };
 
 #endif

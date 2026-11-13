@@ -5,14 +5,14 @@
 #include <map>
 #include <memory>
 
-#include "AbstractGeomObject.hh"
+#include "GeomObject.hh"
 
 
 
-class Scene : public std::map<std::string, std::shared_ptr<AbstractGeomObject>> {
+class Scene : public std::map<std::string, std::shared_ptr<GeomObject>> {
 public:
-    bool addGeomObject(std::shared_ptr<AbstractGeomObject> newObject);
-    std::shared_ptr<AbstractGeomObject> findGeomObject(const std::string &objectName);
+    bool addGeomObject(std::shared_ptr<GeomObject> newObject);
+    std::shared_ptr<GeomObject> findGeomObject(const std::string &objectName);
 };
 
 

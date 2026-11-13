@@ -51,7 +51,7 @@ bool Interp4Move::ReadParameters(std::istream &argStream)
   return true;
 }
 
-bool Interp4Move::ExecuteCmd(Scene *scene)
+bool Interp4Move::ExecuteCmd(Scene *scene, ComChannel *channel)
 {
     return false;
 }

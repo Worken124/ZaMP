@@ -9,6 +9,7 @@
 
 #include "Set4LibInterfaces.hh"
 #include "Scene.hh"
+#include "ComChannel.hh"
 
 
 #define PLUGIN_NAME__move "libInterp4Move.so"
@@ -20,6 +21,7 @@ class ProgramInterpreter {
         std::istringstream commandStream;
         Set4LibInterfaces set4LibInterfaces; 
         Scene scene;
+        ComChannel channel;
 
         void execCommands(std::istringstream &strumien);
 

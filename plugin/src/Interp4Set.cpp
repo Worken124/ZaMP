@@ -53,7 +53,7 @@ bool Interp4Set::ReadParameters(std::istream &argStream)
   return !argStream.fail();
 }
 
-bool Interp4Set::ExecuteCmd(Scene *scene)
+bool Interp4Set::ExecuteCmd(Scene *scene, ComChannel *channel)
 {
     return false;
 }

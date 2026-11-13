@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Scene.hh"
+#include "ComChannel.hh"
 
 /*!
  * \file 
@@ -39,7 +40,7 @@
      */
     virtual bool ReadParameters(std::istream &argStream) = 0;
 
-    virtual bool ExecuteCmd(Scene *scene) = 0;
+    virtual bool ExecuteCmd(Scene *scene, ComChannel *channel) = 0;
 
   };
 
