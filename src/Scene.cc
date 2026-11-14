@@ -4,7 +4,7 @@ Scene::Scene() {}
 
 Scene::~Scene() {}
 
-bool Scene::addGeomObject(std::shared_ptr<AbstractGeomObject> newObject) {
+bool Scene::addGeomObject(std::shared_ptr<GeomObject> newObject) {
     printf("\nDodawanie objektu o nazwie: %s\n", newObject->getName());
     
     (*this)[newObject->getName()] = newObject;
@@ -18,7 +18,7 @@ bool Scene::addGeomObject(std::shared_ptr<AbstractGeomObject> newObject) {
     return true;
 }
 
-std::shared_ptr<AbstractGeomObject> Scene::findGeomObject(const std::string &objectName) {
+std::shared_ptr<GeomObject> Scene::findGeomObject(const std::string &objectName) {
     iterator it = this->find(objectName);
     return (it != this->end()) ? it->second : nullptr;
 }
