@@ -6,9 +6,11 @@
 
 class GeomObject {
 private:
-    vec3d _pos_m;
     std::string _name;
     std::mutex _guard;
+
+    vec3d _pos_m;
+    vec3d _rot_deg;
 
 public:
     std::string getName() const {return _name;};

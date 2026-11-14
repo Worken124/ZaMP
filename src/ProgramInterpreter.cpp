@@ -4,6 +4,12 @@
 
 using namespace std;
 
+
+
+
+
+
+
 void ProgramInterpreter::execCommands(std::istringstream &strumien)
 {
     while (strumien) {
@@ -22,6 +28,7 @@ void ProgramInterpreter::execCommands(std::istringstream &strumien)
         currentCommand->PrintSyntax();              
         currentCommand->ReadParameters(strumien);
         
+        delete currentCommand;
     }
 }
 
@@ -45,4 +52,9 @@ bool ProgramInterpreter::execProgram(const char *filename)
     execCommands(commandStream);
 
     return true;
+}
+
+bool ProgramInterpreter::readXML(const char *sFileName, Configuration &rConfig)
+{
+    return false;
 }

@@ -10,6 +10,7 @@
 #include "Set4LibInterfaces.hh"
 #include "Scene.hh"
 #include "ComChannel.hh"
+#include "Configuration.hh"
 
 
 #define PLUGIN_NAME__move "libInterp4Move.so"
@@ -27,7 +28,8 @@ class ProgramInterpreter {
 
     public:
         bool execProgram(const char* filename);
-        bool readXML(const char* filename);
+        bool ReadFile(const char* sFileName, Configuration &rConfig);
+
 
         ProgramInterpreter() { //TYMCZASOWO - NIE MA XML
             scene = Scene();
