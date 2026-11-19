@@ -7,6 +7,12 @@
 #include <sstream>
 #include <fstream>
 
+#include <xercesc/sax2/SAX2XMLReader.hpp>
+#include <xercesc/sax2/XMLReaderFactory.hpp>
+#include <xercesc/sax2/DefaultHandler.hpp>
+#include <xercesc/util/XMLString.hpp>
+#include "xmlinterp.hh"
+
 #include "Set4LibInterfaces.hh"
 #include "Scene.hh"
 #include "ComChannel.hh"
@@ -24,12 +30,15 @@ class ProgramInterpreter {
         Scene scene;
         ComChannel channel;
 
-        void execCommands(std::istringstream &strumien);
+        xercesc::DefaultHandler* _setFeatures(xercesc::SAX2XMLReader *pParser, Configuration &rConfig);
+        bool _loadGrammar(xercesc::SAX2XMLReader *pParser, const char *sFileName);
+
+        
+        void _execCommands(std::istringstream &strumien);
 
     public:
         bool execProgram(const char* filename);
-        bool ReadFile(const char* sFileName, Configuration &rConfig);
-
+        bool readXML(const char* sFileName, Configuration &rConfig);
 
         ProgramInterpreter() { //TYMCZASOWO - NIE MA XML
             scene = Scene();
