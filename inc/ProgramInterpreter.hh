@@ -29,6 +29,7 @@ class ProgramInterpreter {
         Set4LibInterfaces set4LibInterfaces; 
         Scene scene;
         ComChannel channel;
+        Configuration config;
 
         xercesc::DefaultHandler* _setFeatures(xercesc::SAX2XMLReader *pParser, Configuration &rConfig);
         bool _loadGrammar(xercesc::SAX2XMLReader *pParser, const char *sFileName);

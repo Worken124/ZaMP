@@ -92,6 +92,9 @@ void ProgramInterpreter::_execCommands(std::istringstream &strumien)
 
 bool ProgramInterpreter::execProgram(const char *filename)
 {
+    readXML("config/config.xml", config);
+
+
     FILE *file = fopen(filename, "r");
     if (!file) {
         cerr << "Nie można otworzyć pliku: " << filename << endl;

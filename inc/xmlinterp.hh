@@ -76,11 +76,11 @@ class XMLInterp4Config : public xercesc::DefaultHandler {
 		                       const xercesc::Attributes&     rAttrs
                          );
     /*!
-     * \brief Analizuje atrybuty i  odpwiednio je interpretuje
+     * \brief Analizuje atrybuty i  odpowiednio je interpretuje
      */
     void ProcessLibAttrs(const xercesc::Attributes&   rAttrs);
     /*!
-     * \brief Analizuje atrybuty i odpwiednio je interpretuje
+     * \brief Analizuje atrybuty i odpowiednio je interpretuje
      */
     void ProcessCubeAttrs(const xercesc::Attributes&   rAttrs); 
   private:
