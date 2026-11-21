@@ -4,6 +4,10 @@
 #include "GeomObject.hh"
 
 class Cube : public GeomObject {
+private:
+    vec3d RGB;
+    vec3d scale;
+
 public:
     Cube();
     ~Cube();
