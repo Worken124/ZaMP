@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/wojtek/Dokumenty/vscode/projects/ZaMP/zalazek-cmake/build/cmake_install.cmake",
+		"/home/wojtek/Dokumenty/vscode/projects/ZaMP/zalazek-cmake/build/plugin/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

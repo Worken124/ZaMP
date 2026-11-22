@@ -14,7 +14,7 @@
  */
 
  /*!
-  * \brief Definiuje interfejs interpretera polecenia.
+  * \brief Definiuje interfejs interpretera polecenia
   *
   * Definiuje interfejs interpretera polecenia udostępnianego
   * przez daną wtyczkę.

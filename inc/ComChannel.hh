@@ -9,7 +9,7 @@ public:
     ComChannel();
     ~ComChannel();
 private:
-    std::mutex _guard;
+    mutable std::mutex _guard;
 };
 
 #endif

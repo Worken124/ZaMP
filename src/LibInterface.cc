@@ -14,7 +14,8 @@ bool LibInterface::init(const string &libName)
     _LibHandler = dlopen(libName.c_str(), RTLD_LAZY);
     if (!_LibHandler)
     {
-        std::cerr << "!!! Brak wtyczki: " << libName << std::endl;
+        std::cerr << "!!! Brak wtyczki: " << libName << std::endl
+                  << "Powód: " << dlerror() << std::endl;
         return false;
     }
 

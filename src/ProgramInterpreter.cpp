@@ -67,12 +67,10 @@ bool ProgramInterpreter::_loadGrammar(SAX2XMLReader *pParser,const char* sFileNa
 
 }
 
-
 void ProgramInterpreter::_execCommands(std::istringstream &strumien)
 {
-    while (strumien) {
-        string command;
-        strumien >> command;
+    string command;
+    while (strumien >> command) {
         cout << "Wykonuję komendę: " << command << endl;
 
         std::shared_ptr<LibInterface> currentCommandInt = set4LibInterfaces.findPlugin(command);
@@ -83,18 +81,20 @@ void ProgramInterpreter::_execCommands(std::istringstream &strumien)
 
         AbstractInterp4Command *currentCommand = currentCommandInt->CreateCmdInterp();
         cout << currentCommand << endl;
+
         currentCommand->PrintSyntax();              
         currentCommand->ReadParameters(strumien);
-        
+        //currentCommand->ExecuteCmd(&scene, &channel)
+
         delete currentCommand;
     }
 }
 
-bool ProgramInterpreter::execProgram(const char *filename)
+
+
+
+static bool _loadFile(const char *filename, std::istringstream &stream)
 {
-    readXML("config/config.xml", config);
-
-
     FILE *file = fopen(filename, "r");
     if (!file) {
         cerr << "Nie można otworzyć pliku: " << filename << endl;
@@ -103,14 +103,38 @@ bool ProgramInterpreter::execProgram(const char *filename)
 
     char buffer[256];
     std::ostringstream outstream;
-
+    
     while(fgets(buffer, sizeof(buffer), file)){
         outstream << buffer;
     }
+    fclose(file);
 
-    commandStream.str(outstream.str());
+    stream.str(outstream.str());
+    return true;
+}
 
-    _execCommands(commandStream);
+bool ProgramInterpreter::execProgram(int argc, char *argv[])
+{   
+    std::vector<std::thread> threads;
+
+    for (int i = 1; i < argc; ++i) {
+        const char *filename = argv[i];
+
+        threads.emplace_back([this, filename] { // Majstersztyk lambd
+
+            std::istringstream commandStream;
+            
+            if (!_loadFile(filename, commandStream)) return;
+            _execCommands(commandStream);
+        }        
+        );
+    }
+
+    for (std::thread &thread: threads) {
+        if(thread.joinable()) {
+            thread.join();
+        }
+    }
 
     return true;
 }
@@ -141,20 +165,23 @@ bool ProgramInterpreter::readXML(const char *sFileName, Configuration &rConfig)
 }
 
 ProgramInterpreter::ProgramInterpreter() { 
-    scene = Scene();
     //TYMCZASOWO - NIE MA XML
     //set4LibInterfaces.addPlugin(PLUGIN_NAME__move);
     //set4LibInterfaces.addPlugin(PLUGIN_NAME__set);
 
+    
+    readXML("config/config.xml", config);
 
     //Biblioteki
     for (const std::string &libName : config.getLibraries()) {
         set4LibInterfaces.addPlugin(libName);
     }
-    
+
     //Figury
     for (const std::shared_ptr<GeomObject> obj : config.getObjects()) {
         scene.addGeomObject(obj);
     }
 
 }
+
+

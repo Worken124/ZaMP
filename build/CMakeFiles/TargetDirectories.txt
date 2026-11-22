@@ -1,0 +1,7 @@
+/home/wojtek/Dokumenty/vscode/projects/ZaMP/zalazek-cmake/build/CMakeFiles/cmds_interpreter.dir
+/home/wojtek/Dokumenty/vscode/projects/ZaMP/zalazek-cmake/build/CMakeFiles/edit_cache.dir
+/home/wojtek/Dokumenty/vscode/projects/ZaMP/zalazek-cmake/build/CMakeFiles/rebuild_cache.dir
+/home/wojtek/Dokumenty/vscode/projects/ZaMP/zalazek-cmake/build/plugin/CMakeFiles/Interp4Move.dir
+/home/wojtek/Dokumenty/vscode/projects/ZaMP/zalazek-cmake/build/plugin/CMakeFiles/Interp4Set.dir
+/home/wojtek/Dokumenty/vscode/projects/ZaMP/zalazek-cmake/build/plugin/CMakeFiles/edit_cache.dir
+/home/wojtek/Dokumenty/vscode/projects/ZaMP/zalazek-cmake/build/plugin/CMakeFiles/rebuild_cache.dir

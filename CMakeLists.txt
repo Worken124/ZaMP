@@ -17,12 +17,15 @@ add_executable(${PROJECT_NAME}
     src/vec3d.cc
     src/ComChannel.cc
     src/Cube.cc
+    src/Scene.cc
 )
 
-target_link_libraries(${PROJECT_NAME} XercesC::XercesC)
+target_link_libraries(${PROJECT_NAME} XercesC::XercesC dl pthread)
 
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    BUILD_RPATH "\$ORIGIN/plugin"
+)
 
-set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -Wl,-rpath=./plugin")
 add_custom_command(TARGET ${PROJ_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E echo ""
     COMMAND ${CMAKE_COMMAND} -E echo " Utworzony zostal program:  ${PROJ_NAME}"

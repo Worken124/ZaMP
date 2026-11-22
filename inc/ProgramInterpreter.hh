@@ -6,6 +6,8 @@
 #include <cstring>
 #include <sstream>
 #include <fstream>
+#include <thread>
+#include <vector>
 
 #include <xercesc/sax2/SAX2XMLReader.hpp>
 #include <xercesc/sax2/XMLReaderFactory.hpp>
@@ -25,7 +27,6 @@
 
 class ProgramInterpreter {
     private:
-        std::istringstream commandStream;
         Set4LibInterfaces set4LibInterfaces; 
         Scene scene;
         ComChannel channel;
@@ -38,18 +39,12 @@ class ProgramInterpreter {
         void _execCommands(std::istringstream &strumien);
 
     public:
-        bool execProgram(const char* filename);
+        bool execProgram(int argc, char *argv[]);
         bool readXML(const char* sFileName, Configuration &rConfig);
 
         ProgramInterpreter();
 };
 
-
-
-
-
-
-void readFromFile(const char* filename);
 
 
 #endif

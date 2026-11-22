@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     //program.readFromFile(argv[1]);
 
-    program.execProgram(argv[1]);
+    program.execProgram(argc, argv);
 
 }
 

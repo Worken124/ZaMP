@@ -22,13 +22,13 @@
  * pliku XML.
  */
 class XMLInterp4Config: public xercesc::DefaultHandler {
-    private: Configuration _rConfig;
+    private: Configuration &_rConfig;
 
     public:
         /*!
          * \brief Inicjalizuje obiekt i kojarzy go z listą poleceń robota
          */
-        XMLInterp4Config(Configuration & rConfig): _rConfig(rConfig) {}
+        XMLInterp4Config(Configuration & rConfig);
         /*!
          * \brief Wywoływana jest na początku dokumentu
          */

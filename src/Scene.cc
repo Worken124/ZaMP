@@ -1,11 +1,8 @@
 #include "Scene.hh"
 
-Scene::Scene() {}
-
-Scene::~Scene() {}
-
 bool Scene::addGeomObject(std::shared_ptr<GeomObject> newObject) {
-    printf("\nDodawanie objektu o nazwie: %s\n", newObject->getName());
+    
+    printf("\nDodawanie objektu o nazwie: %s\n", newObject->getName().c_str());
     
     (*this)[newObject->getName()] = newObject;
 
