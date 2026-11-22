@@ -41,11 +41,7 @@ class ProgramInterpreter {
         bool execProgram(const char* filename);
         bool readXML(const char* sFileName, Configuration &rConfig);
 
-        ProgramInterpreter() { //TYMCZASOWO - NIE MA XML
-            scene = Scene();
-            set4LibInterfaces.addPlugin(PLUGIN_NAME__move);
-            set4LibInterfaces.addPlugin(PLUGIN_NAME__set);
-        };
+        ProgramInterpreter();
 };
 
 

@@ -5,9 +5,9 @@ bool Set4LibInterfaces::addPlugin(const std::string &libName)
     printf("\nDodawanie pluginu: %s\n", libName.c_str());
 
     std::shared_ptr<LibInterface> lib = std::make_shared<LibInterface>();
-    lib->init(libName);
+    //lib->init(libName);
 
-    if (!(*lib).init(libName)) {
+    if (!lib->init(libName)) { // !(*lib).init(libName)
         std::cerr << "Dodanie pluginu do zbioru nie powiodło się!" << std::endl;
         return false;
     }

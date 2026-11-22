@@ -139,3 +139,22 @@ bool ProgramInterpreter::readXML(const char *sFileName, Configuration &rConfig)
     return true;
 
 }
+
+ProgramInterpreter::ProgramInterpreter() { 
+    scene = Scene();
+    //TYMCZASOWO - NIE MA XML
+    //set4LibInterfaces.addPlugin(PLUGIN_NAME__move);
+    //set4LibInterfaces.addPlugin(PLUGIN_NAME__set);
+
+
+    //Biblioteki
+    for (const std::string &libName : config.getLibraries()) {
+        set4LibInterfaces.addPlugin(libName);
+    }
+    
+    //Figury
+    for (const std::shared_ptr<GeomObject> obj : config.getObjects()) {
+        scene.addGeomObject(obj);
+    }
+
+}
