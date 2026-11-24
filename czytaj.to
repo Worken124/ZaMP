@@ -21,3 +21,6 @@ Uwaga: Po wygenerowaniu dokumentacji uruchamiany jest program less,
        zglasza program doxygen. Aby zakonczyc jego dzialanie i wyjsc
        z trybu przegladania, nalezy nacisnac klawisz 'Q'.
 
+cmake -B build -S .
+cmake --build build
+time ./build/cmd* abc def

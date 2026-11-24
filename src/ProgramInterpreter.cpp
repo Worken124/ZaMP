@@ -84,7 +84,7 @@ void ProgramInterpreter::_execCommands(std::istringstream &strumien)
 
         currentCommand->PrintSyntax();              
         currentCommand->ReadParameters(strumien);
-        //currentCommand->ExecuteCmd(&scene, &channel)
+        currentCommand->ExecuteCmd(scene, &channel);
 
         delete currentCommand;
     }

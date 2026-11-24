@@ -53,7 +53,7 @@ bool Interp4Pause::ReadParameters(std::istream &argStream)
   return !argStream.fail();
 }
 
-bool Interp4Pause::ExecuteCmd(Scene *scene, ComChannel *channel)
+bool Interp4Pause::ExecuteCmd(Scene &scene, ComChannel *channel)
 {
   usleep(_czas * 1000); 
   return true;

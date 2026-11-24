@@ -56,7 +56,7 @@ class Interp4Pause: public AbstractInterp4Command {
   /*!
   * \brief Wykonuje polecenie Pause
   */
-  virtual bool ExecuteCmd(Scene *scene, ComChannel *channel) override;
+  virtual bool ExecuteCmd(Scene &scene, ComChannel *channel) override;
  };
 
 #endif

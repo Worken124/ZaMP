@@ -2,6 +2,9 @@
 #define ABSTRACTINTERP4COMMAND_HH
 
 #include <iostream>
+#include <thread>
+#include <chrono>
+
 #include "Scene.hh"
 #include "ComChannel.hh"
 
@@ -40,7 +43,7 @@
      */
     virtual bool ReadParameters(std::istream &argStream) = 0;
 
-    virtual bool ExecuteCmd(Scene *scene, ComChannel *channel) = 0;
+    virtual bool ExecuteCmd(Scene &scene, ComChannel *channel) = 0;
 
   };
 

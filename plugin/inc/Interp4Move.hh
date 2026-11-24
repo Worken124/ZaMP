@@ -8,6 +8,9 @@
 
 #include "AbstractInterp4Command.hh"
 
+#define FPS 60
+
+
 /*!
  * \file
  * \brief Definicja klasy Interp4Move
@@ -22,6 +25,12 @@
  *  które wymusza jego ruch.
  */
 class Interp4Move: public AbstractInterp4Command {
+
+  private:
+
+    std::string _objName ;
+    double _szybkosc;
+    double _dlugosc;
 
  public:  /*!
    * \brief Wyświetla postać bi
@@ -49,7 +58,7 @@ class Interp4Move: public AbstractInterp4Command {
   /*!
   * \brief Wykonuje polecenie Move
   */
-  virtual bool ExecuteCmd(Scene *scene, ComChannel *channel) override;
+  virtual bool ExecuteCmd(Scene &scene, ComChannel *channel) override;
 
  };
 

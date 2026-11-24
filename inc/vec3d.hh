@@ -18,15 +18,22 @@ public:
 
     //operacje proste
     vec3d operator+(const vec3d &right) const;
-    vec3d operator-(const vec3d &right) const;
+    vec3d &operator+=(const vec3d &right);
 
+    vec3d operator-(const vec3d &right) const;
+    vec3d &operator-=(const vec3d &right);
 
     //operacje zlozone
     vec3d operator*(const vec3d &right) const;
     vec3d operator*(double mult) const;
     double dot(const vec3d v) const;
     double length() const;
+    vec3d rotRPY(const vec3d &rot_deg) const;
+    void print();
+
+
     friend vec3d operator*(double mult, const vec3d &v);
+    friend std::istream& operator>>(std::istream& strumien, vec3d &v);
     friend std::ostream& operator<<(std::ostream& strumien, const vec3d &v);
 };
 
