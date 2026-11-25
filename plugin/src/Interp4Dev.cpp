@@ -45,7 +45,6 @@ void Interp4Dev::PrintSyntax() const
 
 bool Interp4Dev::ReadParameters(std::istream &argStream)
 {
-  // Polecenie Dev nie ma parametrów
   return true;
 }
 

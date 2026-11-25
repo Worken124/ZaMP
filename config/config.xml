@@ -4,6 +4,7 @@
       <Lib Name="libInterp4Rotate.so"/>
       <Lib Name="libInterp4Set.so"/>
       <Lib Name="libInterp4Pause.so"/>
+      <Lib Name="libInterp4Dev.so"/>
    </Plugins>
    <Objects>
      <Cube Name="Podstawa" Shift="0 -0.5 0" Scale="0.7 0.7 0.2"

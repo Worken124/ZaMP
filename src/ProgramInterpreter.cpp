@@ -71,7 +71,7 @@ void ProgramInterpreter::_execCommands(std::istringstream &strumien)
 {
     string command;
     while (strumien >> command) {
-        cout << "Wykonuję komendę: " << command << endl;
+        //cout << "Wykonuję komendę: " << command << endl;
 
         std::shared_ptr<LibInterface> currentCommandInt = set4LibInterfaces.findPlugin(command);
         if (!currentCommandInt) {
@@ -80,9 +80,9 @@ void ProgramInterpreter::_execCommands(std::istringstream &strumien)
         }
 
         AbstractInterp4Command *currentCommand = currentCommandInt->CreateCmdInterp();
-        cout << currentCommand << endl;
+        //cout << currentCommand << endl;
 
-        currentCommand->PrintSyntax();              
+        //currentCommand->PrintSyntax();              
         currentCommand->ReadParameters(strumien);
         currentCommand->ExecuteCmd(scene, &channel);
 

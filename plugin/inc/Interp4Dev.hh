@@ -18,7 +18,7 @@
 /*!
  * \brief Modeluje interpreter polecenia Dev
  *
- *  Klasa modeluje interpreter polecenie diagnostyczne,
+ *  Klasa modeluje interpreter polecenia diagnostycznego,
  *  które wyświetla wszystkie obiekty i ich parametry.
  */
 class Interp4Dev: public AbstractInterp4Command {
