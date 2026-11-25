@@ -88,6 +88,6 @@ bool Interp4Move::ExecuteCmd(Scene &scene, ComChannel *channel)
 
     std::this_thread::sleep_for(std::chrono::microseconds(1000000 / FPS));
   }
-    cout << *current_position << endl;
+    //cout << *current_position << endl;
     return true;
 }

@@ -5,6 +5,8 @@ set(PLUGINS
     Interp4Move
     Interp4Set
     Interp4Pause
+    Interp4Rotate
+    Interp4Dev
 )
 
 foreach(PLUGIN ${PLUGINS})

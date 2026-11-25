@@ -1,5 +1,11 @@
-Set cos 1 2 3 4 5 6
-Pause 1000
+Set Podstawa 100 200 300 90 45 0
+Pause 2000
 Move Podstawa 200 20
 Pause 2000
 Move Podstawa 200 20
+Pause 2000
+Rotate Podstawa OX 200 20
+Pause 2000
+Move Podstawa 300 30
+Pause 2000
+
