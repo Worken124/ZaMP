@@ -95,6 +95,7 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes & rAttrs) {
         else if(!strcmp(sAttributeName, "Shift") && miniVecParser(sAttributeValue)) pCube->setShift(tempVec);
         else if(!strcmp(sAttributeName, "RGB") && miniVecParser(sAttributeValue)) pCube->setRGB(tempVec);
         else if(!strcmp(sAttributeName, "Trans_m") && miniVecParser(sAttributeValue)) *(pCube->usePos_m()) = tempVec;
+        else if(!strcmp(sAttributeName, "RotXYZ_deg") && miniVecParser(sAttributeValue)) *(pCube->useRot_deg()) = tempVec;
 
         xercesc::XMLString::release( & sAttributeName);
         xercesc::XMLString::release( & sAttributeValue);

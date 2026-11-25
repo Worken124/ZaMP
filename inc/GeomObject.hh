@@ -31,6 +31,7 @@ class GeomObject {
         vec3d *usePos_m() {return &_pos_m;}
 
         vec3d getRot_deg() const {return _rot_deg;}
+        vec3d *useRot_deg() {return &_rot_deg;}
 
         [[nodiscard]] std::unique_lock<std::mutex> lock() const { return std::unique_lock<std::mutex>(_guard); }
 };

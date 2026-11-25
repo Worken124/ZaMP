@@ -26,8 +26,8 @@ class Interp4Set: public AbstractInterp4Command {
   private:
 
     std::string _objName ;
-    double _wsp[3];
-    double _kat[3];
+    vec3d _wsp;
+    vec3d _rot;
 
   public:  
 

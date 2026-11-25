@@ -4,7 +4,7 @@
 
 using std::cout;
 using std::endl;
-
+using std::cerr;
 
 extern "C" {
   AbstractInterp4Command* CreateCmdInterp(void);
@@ -48,12 +48,24 @@ void Interp4Set::PrintSyntax() const
 
 bool Interp4Set::ReadParameters(std::istream &argStream)
 {
-  argStream >> _objName >> _wsp[0] >> _wsp[1] >> _wsp[2] >> _kat[0] >> _kat[1] >> _kat[2];
-  cout << _wsp[2] << endl;
+  argStream >> _objName >> _wsp >> _rot;
+  //cout << _wsp[2] << endl;
   return !argStream.fail();
 }
 
 bool Interp4Set::ExecuteCmd(Scene &scene, ComChannel *channel)
 {
+  std::shared_ptr<GeomObject> obj = scene.findGeomObject(_objName);
+  if (obj == nullptr) {
+    cerr << "Nie znaleziono obiektu" << endl;
     return false;
+  }
+
+  {
+    std::unique_lock<std::mutex> lk = obj->lock();
+    *obj->usePos_m() = _wsp;
+    *obj->useRot_deg() = _rot;
+  }
+
+  return true;
 }
