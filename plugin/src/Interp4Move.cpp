@@ -47,15 +47,20 @@ void Interp4Move::PrintSyntax() const
 bool Interp4Move::ReadParameters(std::istream &argStream)
 {
   argStream >> _objName >> _szybkosc >> _dlugosc;
+  //cout << _objName << endl;
   return !argStream.fail();}
 
 bool Interp4Move::ExecuteCmd(Scene &scene, ComChannel *channel)
 {
+  //cout << "abccd" << _szybkosc << _dlugosc << _objName << endl;
+
   std::shared_ptr<GeomObject> obj = scene.findGeomObject(_objName);
   if (obj == nullptr) {
     cerr << "Nie znaleziono obiektu" << endl;
     return false;
   }
+
+  //cout << _szybkosc << _dlugosc << endl;
 
   if (_szybkosc <= 0.0 || _dlugosc <= 0.0) { // szybkość jest tylko dodatnia
     return true;
@@ -83,6 +88,6 @@ bool Interp4Move::ExecuteCmd(Scene &scene, ComChannel *channel)
 
     std::this_thread::sleep_for(std::chrono::microseconds(1000000 / FPS));
   }
-    cout << current_position << endl;
+    cout << *current_position << endl;
     return true;
 }

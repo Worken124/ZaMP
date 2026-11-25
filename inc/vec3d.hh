@@ -11,6 +11,7 @@ public:
         double wsp[3];
     };
     vec3d(double x, double y, double z);
+    vec3d();
     //~vec3d();
 
     //zapis/odczyt

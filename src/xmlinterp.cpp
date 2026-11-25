@@ -52,7 +52,8 @@ void XMLInterp4Config::ProcessLibAttrs(const xercesc::Attributes & rAttrs) {
     cout << "  Nazwa biblioteki: " << sLibName << endl;
 
     // Tu trzeba wpisać własny kod ...
-    _rConfig.addlibrary(sLibName);     // zapisz nazwę do Configuration
+
+    _rConfig.addlibrary(sLibName);
     
     xercesc::XMLString::release( & sParamName);
     xercesc::XMLString::release( & sLibName);
@@ -68,70 +69,40 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes & rAttrs) {
         cerr << "Zla ilosc atrybutow dla \"Cube\"" << endl;
         exit(1);
     }
+    std::shared_ptr<Cube> pCube = std::make_shared<Cube>();
 
-    /*
-     *  Tutaj pobierane sa nazwy pierwszego i drugiego atrybuty.
-     *  Sprawdzamy, czy na pewno jest to Name i Value.
-     */
-
-    char * sName_Name = xercesc::XMLString::transcode(rAttrs.getQName(0));
-    char * sName_Scale = xercesc::XMLString::transcode(rAttrs.getQName(1));
-    char * sName_RGB = xercesc::XMLString::transcode(rAttrs.getQName(2));
-
-    XMLSize_t Index = 0;
-    char * sValue_Name = xercesc::XMLString::transcode(rAttrs.getValue(Index));
-    char * sValue_Scale = xercesc::XMLString::transcode(rAttrs.getValue(1));
-    char * sValue_RGB = xercesc::XMLString::transcode(rAttrs.getValue(2));
-
-    //-----------------------------------------------------------------------------
-    // Wyświetlenie nazw atrybutów i ich "wartości"
-    //
-    cout << " Atrybuty:" << endl <<
-        "     " << sName_Name << " = \"" << sValue_Name << "\"" << endl <<
-        "     " << sName_Scale << " = \"" << sValue_Scale << "\"" << endl <<
-        "     " << sName_RGB << " = \"" << sValue_RGB << "\"" << endl <<
-        endl;
-    //-----------------------------------------------------------------------------
-    // Przykład czytania wartości parametrów
-    // Ten przykład jest zrobiony "na piechotę" wykorzystując osobne zmienne.
-    // Skala powinna być wektorem. Czytanie powinno być rezlizowane z wykorzysaniem
-    // wektorów, np.
-    //
-    //
-    // istringstream IStrm;
-    // IStrm.str(sValue_Scale);
-    // Vector3D  Scale;
-    //
-    // IStrm >> Scale;
-    //
     istringstream IStrm;
+    vec3d tempVec;
 
-    IStrm.str(sValue_Scale);
-    double Sx, Sy, Sz;
+    auto miniVecParser = [&IStrm, &tempVec](char *skad) -> bool {
+        IStrm.clear();
+        IStrm.str(skad);
+        IStrm >> tempVec;
+        if (IStrm.fail()){
+            cerr << " Blad odczytu wartosci z XML do Cube!!!" << endl;
+            return false;
+        }
+        return true;
+    };
 
-    IStrm >> Sx >> Sy >> Sz;
-    if (IStrm.fail()) {
-        cerr << " Blad!!!" << endl;
-    } else {
-        cout << " Czytanie wartosci OK!!!" << endl;
-        cout << "     " << Sx << "  " << Sy << "  " << Sz << endl;
+
+    for (XMLSize_t i = 0; i < rAttrs.getLength(); ++i){
+        char * sAttributeName = xercesc::XMLString::transcode(rAttrs.getQName(i));
+        char * sAttributeValue = xercesc::XMLString::transcode(rAttrs.getValue(i));
+
+        if(!strcmp(sAttributeName, "Name")) pCube->setName(sAttributeValue);
+        else if(!strcmp(sAttributeName, "Scale") && miniVecParser(sAttributeValue)) pCube->setScale(tempVec);
+        else if(!strcmp(sAttributeName, "Shift") && miniVecParser(sAttributeValue)) pCube->setShift(tempVec);
+        else if(!strcmp(sAttributeName, "RGB") && miniVecParser(sAttributeValue)) pCube->setRGB(tempVec);
+        else if(!strcmp(sAttributeName, "Trans_m") && miniVecParser(sAttributeValue)) *(pCube->usePos_m()) = tempVec;
+
+        xercesc::XMLString::release( & sAttributeName);
+        xercesc::XMLString::release( & sAttributeValue);
     }
 
-    // Tu trzeba wstawić odpowiednio własny kod ...
-
-    std::shared_ptr<Cube> pCube = std::make_shared<Cube>();
-    pCube->setName(sValue_Name);
-
-    //itd
-    
     _rConfig.addObject(pCube);
-    
-    xercesc::XMLString::release( & sName_Name);
-    xercesc::XMLString::release( & sName_Scale);
-    xercesc::XMLString::release( & sName_RGB);
-    xercesc::XMLString::release( & sValue_Name);
-    xercesc::XMLString::release( & sValue_Scale);
-    xercesc::XMLString::release( & sValue_RGB);
+
+    return;
 }
 
 /*!

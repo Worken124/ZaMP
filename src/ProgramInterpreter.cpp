@@ -181,7 +181,6 @@ ProgramInterpreter::ProgramInterpreter() {
     for (const std::shared_ptr<GeomObject> obj : config.getObjects()) {
         scene.addGeomObject(obj);
     }
-
 }
 
 

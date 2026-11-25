@@ -3,6 +3,8 @@
 
 vec3d::vec3d(double x, double y, double z) : wsp{x, y, z} {}
 
+vec3d::vec3d() {}
+
 //operacje proste
 vec3d vec3d::operator+(const vec3d &right) const{
     return vec3d(x + right.x, y + right.y, z + right.z);

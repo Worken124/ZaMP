@@ -23,6 +23,7 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} XercesC::XercesC dl pthread)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
+    ENABLE_EXPORTS ON
     BUILD_RPATH "\$ORIGIN/plugin"
 )
 
