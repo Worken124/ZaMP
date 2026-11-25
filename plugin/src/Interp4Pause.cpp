@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Interp4Pause.hh"
-#include <unistd.h>
 
 using std::cout;
 using std::endl;
@@ -55,6 +54,6 @@ bool Interp4Pause::ReadParameters(std::istream &argStream)
 
 bool Interp4Pause::ExecuteCmd(Scene &scene, ComChannel *channel)
 {
-  usleep(_czas * 1000); 
+  std::this_thread::sleep_for(std::chrono::microseconds(1000 * _czas));
   return true;
 }
